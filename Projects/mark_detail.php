@@ -7,12 +7,12 @@ if (!isset($_SESSION['user_id'])) {
     exit();
 }
 
-// Kết nối ến StudentManager
 include 'StudentManager.php';
-$studentManager = new StudentManager();
 
-// Lấy danh sách sinh viên
-$students = $studentManager->getAllStudents();
+// Lấy danh sách sinh viên và iểm theo môn học
+$studentManager = new StudentManager();
+$markDetails = $studentManager->getMarkDetails();
+
 ?>
 
 <!DOCTYPE html>
@@ -25,31 +25,28 @@ $students = $studentManager->getAllStudents();
 </head>
 <body>
 <div class="container mt-5">
-    <h2>Welcome, <?php echo $_SESSION['username']; ?>!</h2>
-    <p>This is the main page after successful login</p>
+    <h2>Mark Details</h2>
 
-    <a href="logout.php" class="btn btn-danger">Logout</a>
-
-    <h3>Student List</h3>
     <table class="table">
         <thead>
         <tr>
-            <th>ID</th>
-            <th>Name</th>
-<!--            Add other columns as needed-->
+            <th>Student ID</th>
+            <th>Student Name</th>
+            <th>Subject</th>
+            <th>Mark</th>
         </tr>
         </thead>
         <tbody>
-        <?php foreach ($students as $student): ?>
+        <?php foreach ($markDetails as $markDetail): ?>
             <tr>
-                <td><?php echo $student['id']; ?></td>
-                <td><?php echo $student['name']; ?></td>
-<!--                Add other columns as needed-->
+                <td><?php echo $markDetail['student_id']; ?></td>
+                <td><?php echo $markDetail['student_name']; ?></td>
+                <td><?php echo $markDetail['subject']; ?></td>
+                <td><?php echo $markDetail['mark']; ?></td>
             </tr>
         <?php endforeach; ?>
         </tbody>
     </table>
 </div>
-
 </body>
 </html>

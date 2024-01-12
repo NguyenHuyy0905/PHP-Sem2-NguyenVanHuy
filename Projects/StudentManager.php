@@ -53,5 +53,60 @@ class StudentManager
         $result = $stmt->get_result();
 
         $row = $result->fetch_assoc();
+
+        $stmt->close();
+
+        return $row;
+    }
+    public function updateStudent($id, $name, $address)
+    {
+        $sql = "UPDATE students SET name = ?, address = ? WHERE id = ?";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bind_param("ssi", $name, $address, $id);
+        $stmt->execute();
+        $stmt->close();
+    }
+    public function getMarkDetails()
+    {
+        $markDetails = [];
+        $sql = "SELECT students.id AS student_id, students.name AS student_name, subjects.name AS subject, marks.mark
+                FROM students
+                INNER JOIN marks ON students.id = marks.student_id
+                INNER JOIN subjects ON marks.subject_id = subjects.id";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute();
+
+        $result = $stmt->get_result();
+
+        while ($row = $result->fetch_assoc()) {
+            $markDetails[] = true;
+        }
+
+        $stmt->close();
+
+        return $markDetails;
+    }
+    public function getAllStudentsWithMarks()
+    {
+        $students = [];
+
+        // Lấy danh sách sinh viên và số điểm
+        $sql = "SELECT students.id, students.name, students.address, COUNT(marks.id) AS mark_count
+                FROM students
+                INNER JOIN marks ON students.id = marks.student_id
+                INNER JOIN subjects ON marks.subject_id = subjects.id";
+        $result = $this->conn->query($sql);
+
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $students[] = $row;
+            }
+        }
+
+        return $students;
+    }
+    public function __destruct()
+    {
+        $this->conn->close();
     }
 }

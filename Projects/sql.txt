@@ -1,6 +1,6 @@
-DROP DATABASE IF EXIST PhpDemoAccount;
+DROP DATABASE IF EXISTS PhpDemoAccount;
 
-CREATE TABLE PhpDemoAccount;
+CREATE DATABASE PhpDemoAccount;
 
 USE PhpDemoAccount;
 
@@ -35,8 +35,8 @@ CREATE TABLE marks(
 INSERT INTO students (id, name, address) VALUES
 (1, 'John Doe', '123 Main Street'),
 (2, 'Jane Smith', '456 Oak Avenue'),
-(3, 'Bob Johnson', 789 Elm Lane),
-(4, 'Alice Brown', 987 Pine Road),
+(3, 'Bob Johnson', '789 Elm Lane'),
+(4, 'Alice Brown', '987 Pine Road'),
 (5, 'Charlie Wilson', '654 Birch Street');
 
 INSERT INTO subjects (name) VALUES
