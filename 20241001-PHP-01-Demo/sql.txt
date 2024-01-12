@@ -1,0 +1,13 @@
+DROP DATABASE IF EXIST PhpDemoAccount;
+
+CREATE TABLE PhpDemoAccount;
+
+USE PhpDemoAccount;
+
+CREATE TABLE account(
+    id int PRIMARY KEY,
+    username varchar(30),
+    password varchar(30)
+);
+
+INSERT INTO `account`(`id`, `username`, `password`) VALUES ('1','nguyenhuy','123456');

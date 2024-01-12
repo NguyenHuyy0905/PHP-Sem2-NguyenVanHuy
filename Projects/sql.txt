@@ -1,0 +1,50 @@
+DROP DATABASE IF EXIST PhpDemoAccount;
+
+CREATE TABLE PhpDemoAccount;
+
+USE PhpDemoAccount;
+
+CREATE TABLE account(
+    id int PRIMARY KEY,
+    username varchar(30),
+    password varchar(30)
+);
+
+INSERT INTO `account`(`id`, `username`, `password`) VALUES ('1','nguyenhuy','123456');
+
+CREATE TABLE students(
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name varchar(255) NOT NULL,
+    address varchar(255)
+);
+
+CREATE TABLE subjects(
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name varchar(255)
+);
+
+CREATE TABLE marks(
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    student_id INT,
+    subject_id INT,
+    mark FLOAT,
+    FOREIGN KEY (student_id) REFERENCES students(id),
+    FOREIGN KEY (subject_id) REFERENCES subjects(id)
+);
+
+INSERT INTO students (id, name, address) VALUES
+(1, 'John Doe', '123 Main Street'),
+(2, 'Jane Smith', '456 Oak Avenue'),
+(3, 'Bob Johnson', 789 Elm Lane),
+(4, 'Alice Brown', 987 Pine Road),
+(5, 'Charlie Wilson', '654 Birch Street');
+
+INSERT INTO subjects (name) VALUES
+('Mathematics'), ('Physics'), ('Chemistry'), ('Biology'), ('History');
+
+INSERT INTO marks (student_id, subject_id, mark) VALUES
+(1, 1, 9.5),
+(2, 2, 8.0),
+(3, 1, 9.3),
+(4, 3, 8.7),
+(5, 2, 9.2);
