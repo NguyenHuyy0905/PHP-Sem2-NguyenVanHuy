@@ -58,7 +58,7 @@ $students = $studentManager->getAllStudentsWithMarks();
                     <?php
                     // Kiểm tra xem sinh viên có điểm hay không
                     if ($student['mark_count'] > 0) {
-                        echo '<a href="mark_details.php?student_id=' . $student['id'] . '" class="btn btn-info btn-sm">
+                        echo '<a href="mark_detail.php?student_id=' . $student['id'] . '" class="btn btn-info btn-sm">
                         Mark Details</a>';
                     } else {
                         echo '<button class="btn btn-info btn-sm" disabled>Mark Details</button>';

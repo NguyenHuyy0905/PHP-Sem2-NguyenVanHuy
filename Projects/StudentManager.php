@@ -79,7 +79,7 @@ class StudentManager
         $result = $stmt->get_result();
 
         while ($row = $result->fetch_assoc()) {
-            $markDetails[] = true;
+            $markDetails[] = $row;
         }
 
         $stmt->close();

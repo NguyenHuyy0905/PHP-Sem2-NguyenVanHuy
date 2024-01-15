@@ -1,0 +1,40 @@
+-- Tạo database
+DROP DATABASE IF EXISTS PhpSlotThreeMarks;
+
+CREATE DATABASE PhpSlotThreeMarks;
+
+USE PhpSlotThreeMarks;
+
+-- Tạo bảng Account
+CREATE TABLE Account(
+    id int PRIMARY KEY AUTO_INCREMENT,
+    username varchar(30),
+    password varchar(30)
+);
+
+INSERT INTO Account VALUES (1, 'admin', 'admin123');
+
+SELECT * FROM Account WHERE username = 'admin' AND password = 'admin123';
+
+-- Tạo bảng Students
+CREATE TABLE Students(
+    id int PRIMARY KEY AUTO_INCREMENT,
+    name varchar(255) NOT NULL,
+    address varchar(255)
+);
+
+-- Tạo bảng Subjects
+CREATE TABLE Subjects(
+    id int PRIMARY KEY AUTO_INCREMENT,
+    name varchar(255) NOT NULL
+);
+
+-- Tạo bảng Marks
+CREATE TABLE marks(
+    id int PRIMARY KEY AUTO_INCREMENT,
+    student_id int,
+    subject_id int,
+    mark float,
+    FOREIGN KEY (student_id) REFERENCES Students(id),
+    FOREIGN KEY (subject_id) REFERENCES Subjects(id)
+);
