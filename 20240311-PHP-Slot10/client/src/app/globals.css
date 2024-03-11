@@ -1,0 +1,108 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Style all input and textarea elements */
+input,
+textarea {
+    padding: 10px;
+    /* Add padding */
+    border: 1px solid #ccc;
+    /* Add border */
+    border-radius: 5px;
+    /* Add border radius */
+    font-size: 16px;
+    /* Set font size */
+    outline: none;
+    /* Remove outline */
+}
+
+/* Style for focused input and textarea elements */
+input:focus,
+textarea:focus {
+    border-color: #007bff;
+    /* Change border color when focused */
+}
+
+
+/* Style only text input elements */
+input[type="text"] {
+    /* Additional styles specific to text inputs */
+}
+
+/* Style input elements within a form with class "my-form" */
+.my-form input {
+    /* Additional styles specific to input elements within "my-form" */
+}
+
+/* Hide the default checkbox */
+input[type="checkbox"] {
+    position: relative;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-color: #fff;
+    border: 2px solid #007bff;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+
+/* Style the checked state */
+input[type="checkbox"].checked {
+    background-color: #007bff;
+}
+
+/* Style the checkmark */
+input[type="checkbox"]::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 10px;
+    height: 10px;
+    border: solid #fff;
+    border-width: 0 2px 2px 0;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+/* Show the checkmark when checkbox is checked */
+input[type="checkbox"]:checked+.custom-checkbox::after {
+    opacity: 1;
+}
+
+/* Style the select dropdown */
+select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    padding: 8px 30px 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+/* Style the dropdown arrow */
+select::after {
+    content: '\25BC';
+    /* Unicode character for down arrow */
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+/* Style the options */
+select option {
+    padding: 8px;
+}
+
+/* Style the selected option */
+select option:checked {
+    background-color: #007bff;
+    color: #fff;
+}

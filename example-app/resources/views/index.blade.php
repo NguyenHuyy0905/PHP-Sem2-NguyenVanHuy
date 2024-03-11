@@ -31,12 +31,23 @@
             @foreach ($products as $product)
                 <tr>
                     <td>{{ ++$i }}</td>
-                    <td>{{  }}</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td>{{ $product->product_name }}</td>
+                    <td>{{ $product->product_desc }}</td>
+                    <td>{{ $product->product_qty }}</td>
+                    <td>
+                        <form action="{{ route('products.destroy', $product->id) }}" method="POST">
+                            <a class="btn btn-info" href="{{ route('products.show', $product->id) }}">Show</a>
+                            <a class="btn btn-primary" href="{{ route('$products.edit', $product->id) }}">Edit</a>
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                    </td>
                 </tr>
             @endforeach
         </table>
+    @else
+        <div class="alert alert-alert">Start Adding to the Database.</div>
     @endif
+    {!! $products->links() !!}
+@endsection
